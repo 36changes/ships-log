@@ -32,7 +32,7 @@
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
-  <div id="root"></div>
+  <div id="root2"></div>
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -43,6 +43,29 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+  <script>
+    import * as Web3 from 'web3'
+import { OpenSeaPort, Network } from 'opensea-js'
+
+// This example provider won't let you make transactions, only read-only calls:
+const provider = new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/03672b06fd384bc4bd05af5e65c343e0')
+
+const seaport = new OpenSeaPort(provider, {
+  networkName: Network.Main
+})
+
+const listing = await seaport.createSellOrder({
+  asset: {
+    tokenId:151,
+    tokenAddress:0xf2febe0fc74ebea939240851686d5b5455d200ab,
+  },
+  accountAddress : 0xf7d929ac10c1b5a5a9fd417e5ec678bb02f78b8c,
+  startAmount: 3,
+  // If `endAmount` is specified, the order will decline in value to that amount until `expirationTime`. Otherwise, it's a fixed-price order:
+  //endAmount: 0,
+  //expirationTime
+})
+  </script>
 </body>
 
 </html>
