@@ -15,5 +15,23 @@ if (process.env.NODE_ENV === "production") {
   console.info("Not loading Google Analytics in " + process.env.NODE_ENV + " environment")
 }
 
+
+
+
+
+
+const listing = await seaport.createSellOrder({
+  asset: {
+    tokenId:151,
+    tokenAddress:0xf2febe0fc74ebea939240851686d5b5455d200ab,
+  },
+  accountAddress : 0xf7d929ac10c1b5a5a9fd417e5ec678bb02f78b8c,
+  startAmount: 3,
+  // If `endAmount` is specified, the order will decline in value to that amount until `expirationTime`. Otherwise, it's a fixed-price order:
+  //endAmount: 0,
+  //expirationTime
+})
+
+
 // Main render action
 ReactDOM.render(<App />, document.getElementById('root'));
