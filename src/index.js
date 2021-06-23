@@ -1,19 +1,20 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
-import './index.css';
-import { GOOGLE_ANALYTICS_ID } from './constants';
+import * as Web3 from 'web3'
+import { OpenSeaPort, Network } from 'opensea-js'
 
-// Google Analytics loading
-if (process.env.NODE_ENV === "production") {
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){window.dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', GOOGLE_ANALYTICS_ID);
-} else {
-  console.info("Not loading Google Analytics in " + process.env.NODE_ENV + " environment")
-}
+// This example provider won't let you make transactions, only read-only calls:
+const provider = new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/03672b06fd384bc4bd05af5e65c343e0')
 
-// Main render action
-ReactDOM.render(<App />, document.getElementById('root'));
+const seaport = new OpenSeaPort(provider, {
+  networkName: Network.Main
+})
+
+// Address allowed to buy from you
+const buyerAddress = "0x4a861fdbfff083b4c87be25ebba96c3751336e1d"
+
+const listing = await seaport.createSellOrder({
+  tokenAddress: "0x0b08af3b5a4877ae471342342743f7cb86db604b", // Decentraland
+  tokenId: "231", // Token ID
+  accountAddress: OWNERS_WALLET_ADDRESS,
+  startAmount: 10,
+  buyerAddress
+})
