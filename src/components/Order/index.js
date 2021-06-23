@@ -65,16 +65,7 @@ export default class Order extends React.Component {
     const { accountAddress, order } = this.props
     const buyAsset = async () => {
       if (accountAddress && !canAccept) {
-        // Address allowed to buy from you
-const buyerAddress = "0x4a861fdbfff083b4c87be25ebba96c3751336e1d"
-
-const listing = await seaport.createSellOrder({
-  tokenAddress: "0x0b08af3b5a4877ae471342342743f7cb86db604b", // Decentraland
-  tokenId: "231", // Token ID
-  accountAddress: OWNERS_WALLET_ADDRESS,
-  startAmount: 0,
-  buyerAddress
-})
+       
         this.setState({
           errorMessage: "You already own this asset!"
         })
