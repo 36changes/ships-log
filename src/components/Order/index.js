@@ -126,16 +126,7 @@ export default class Order extends React.Component {
       </span>
     )
   }
-// Address allowed to buy from you
-const buyerAddress = "0x4a861fdbfff083b4c87be25ebba96c3751336e1d"
 
-const listing = await seaport.createSellOrder({
-  tokenAddress: "0x0b08af3b5a4877ae471342342743f7cb86db604b", // Decentraland
-  tokenId: "231", // Token ID
-  accountAddress: OWNERS_WALLET_ADDRESS,
-  startAmount: 0,
-  buyerAddress
-})
   render() {
     const { errorMessage } = this.state
     const { order, accountAddress } = this.props
