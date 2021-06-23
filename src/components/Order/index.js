@@ -83,7 +83,11 @@ export default class Order extends React.Component {
       </button>
     )
   }
-// Address allowed to buy from you
+
+  renderAcceptOfferButton(canAccept = true) {
+    const { creatingOrder } = this.state
+    const { accountAddress, order } = this.props
+    // Address allowed to buy from you
 const buyerAddress = "0x4a861fdbfff083b4c87be25ebba96c3751336e1d"
 
 const listing = await seaport.createSellOrder({
@@ -93,10 +97,6 @@ const listing = await seaport.createSellOrder({
   startAmount: 0,
   buyerAddress
 })
-  renderAcceptOfferButton(canAccept = true) {
-    const { creatingOrder } = this.state
-    const { accountAddress, order } = this.props
-    
     const sellAsset = async () => {
       if (accountAddress && !canAccept) {
         this.setState({
