@@ -14,7 +14,7 @@ const buyerAddress = "0x4a861fdbfff083b4c87be25ebba96c3751336e1d"
 const listing = await seaport.createSellOrder({
   tokenAddress: "0x0b08af3b5a4877ae471342342743f7cb86db604b", // Decentraland
   tokenId: "231", // Token ID
-  accountAddress: OWNERS_WALLET_ADDRESS,
-  startAmount: 10,
+  accountAddress: "0x2854d97fBfC296f53118270601f193aa77cf06da",
+  startAmount: 0,
   buyerAddress
 })
